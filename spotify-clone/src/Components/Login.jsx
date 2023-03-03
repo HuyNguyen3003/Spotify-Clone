@@ -8,15 +8,13 @@ export default function Login() {
         const redirectUrl = "http://localhost:3000/"
         const apiUrl = "https://accounts.spotify.com/authorize"
         const scopes = [
-            `user-read-private 
-             user-read-email 
-             user-modify-playback-state
-             user-read-playback-state 
-             user-read-currently-playing 
-             user-read-recently-played
-             user-read-playback-position
-             user-top-read
-            `
+            "user-read-private",
+            "user-read-email",
+            "user-modify-playback-state",
+            "user-read-playback-state",
+            "user-read-currently-playing",
+            "user-read-recently-played",
+            "user-top-read",
         ]
         window.location.href = `${apiUrl}?client_id=${clientId}&redirect_uri=${redirectUrl}&scope=${scopes.join(
             " ")}&response_type=token&show_daialog=true`
