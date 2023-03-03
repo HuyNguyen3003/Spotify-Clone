@@ -1,11 +1,39 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from "styled-components"
 import Body from './Body'
 import Footer from './Footer'
 import Navbar from './Navbar'
 import Sidebar from './Sidebar'
+import { useStateProvider } from '../Utils/StateProvider'
+import { reducerCases } from "../Utils/Constants"
+import axios from 'axios'
+
+
 
 export default function Spotify() {
+
+    const [{ token }, dispatch] = useStateProvider()
+
+    useEffect(() => {
+
+        const getUserInfor = async () => {
+            const { data } = await axios.get("https://api.spotify.com/v1/me", {
+                headers: {
+                    Authorization: "Bearer " + token,
+                    "Content-Type": "application/json"
+                }
+            })
+            const userInfor = {
+                userId: data.id,
+                userName: data.display_name,
+            }
+            dispatch({ type: reducerCases.SET_USER, userInfor })
+        }
+        getUserInfor()
+
+
+    }, [dispatch, token])
+
     return (
         <Container>
             <div className="spotify_body">
@@ -42,7 +70,7 @@ const Container = styled.div`
     background-color:rgb(32,87,100);
     .body{
         height:100%;
-        width:100%;
+        width:100vw;
         overflow:auto;
     }
 
