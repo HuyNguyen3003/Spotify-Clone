@@ -3,7 +3,10 @@ import { reducerCases } from "./Constants"
 export const initialState = {
     token: null,
     playlists: [],
-    userInfor: null
+    userInfor: null,
+    selectedPlaylistId: "7fUGgBMY0b6CDAg1FpsJ7G",
+    selectedPlaylist: null
+
 }
 
 const reducer = (state, action) => {
@@ -28,6 +31,12 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 userInfor: action.userInfor
+            }
+        }
+        case reducerCases.SET_PLAYLIST: {
+            return {
+                ...state,
+                selectedPlaylist: action.Playlist
             }
         }
         default:
