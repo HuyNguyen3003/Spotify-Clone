@@ -91,7 +91,7 @@ export default function Body({ headerBackground }) {
                                             track_number
                                         }, index) => {
                                             return (
-                                                <div className="row" key={id}>
+                                                <div className="row" key={index}>
                                                     <div className="col">
                                                         <span>{index + 1}</span>
                                                     </div>
@@ -154,7 +154,7 @@ height:200vh;
       grid-template-columns: 0.3fr 3fr 2fr 0.1fr;
       margin: 1rem 0 0 0;
       color: #dddcdc;
-     position: sticky;
+     //position: sticky;
       top: 15vh;
       padding: 1rem 2rem;
       transition: 0.3s ease-in-out;
